@@ -24,7 +24,7 @@ fun main() {
 
     println("\ntask 6")
     println(temperatureConvert(66.0, 'C'))
-    // println(temperatureConvert(0.0, 'K')) // throw an exception
+    println(temperatureConvert(0.0, 'K'))
 
     println("\ntask 7")
     println(clothingSelection(36))
@@ -94,15 +94,15 @@ fun fileType(fileExtension: String): String {
     }
 }
 
-fun temperatureConvert(temperature: Double, unit: Char): Double {
+fun temperatureConvert(temperature: Double, unit: Char): String {
     return if (unit == 'C') {
-        temperature * 9 / 5 + 32
+        "${temperature * 9 / 5 + 32} F"
     }
     else if (unit == 'F') {
-        (temperature - 32) * 5 / 9
+        "${(temperature - 32) * 5 / 9} C"
     }
     else {
-        throw Exception("wrong unit argument (enter C or F)")
+        "wrong unit argument (enter C or F)"
     }
 }
 
