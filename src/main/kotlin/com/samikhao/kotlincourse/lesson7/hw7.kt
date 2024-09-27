@@ -52,9 +52,8 @@ fun main() {
 
 
     i = 10
-    while (i-- > 5) {
-        println(i)
-    }
+    while (--i > 5) {""}
+    println(i)
 
     println("\ndo ... while")
     i = 5
@@ -65,7 +64,7 @@ fun main() {
 
     i = 5
     do {
-        i++
+        println(i++)
     } while (i < 10)
 
     println("\nbreak")
@@ -73,6 +72,7 @@ fun main() {
         if (i == 6) {
             break
         }
+        println(i)
     }
     println()
 
