@@ -10,7 +10,6 @@ fun main() {
 
     println("\n1 task:")
     extractDataFromLog("Пользователь вошел в систему -> 2021-12-01 09:48:23")
-    println()
 
     println("\n2 task:")
     println(identityMasking("4539 1488 0343 6467"))
@@ -32,7 +31,7 @@ fun main() {
     println(decrypt("oKltni W"))
 
     println("\n+3 task:")
-    multiplicationTable(30, 80)
+    multiplicationTable(-13, -5)
 }
 
 fun changeString(str: String): String {
@@ -100,20 +99,43 @@ fun decrypt(str: String): String {
     return res
 }
 
-fun multiplicationTable(x: Int, y: Int) {
-    var w: Int = "${x * y}".length + 1 // width
+fun getSign(num: Int): Int {
+    return when {
+        num < 0 -> -1
+        num > 0 -> 1
+        else -> 0
+    }
+}
 
-    print(" ".repeat(w))
-    for (i in 1..x) {
-        print(String.format("%${w}s", i))
+fun multiplicationTable(x: Int, y: Int) {
+    if (x * y == 0) throw Exception("Zero is not allowed")
+
+    var signX = getSign(x)
+    var signY = getSign(y)
+
+    var w = "${x * y}".length + 1 // width
+    if ("$x".length + 1 > w) {
+        w = "$x".length + 1
+    }
+
+    print(" ".repeat(w)) // default indent
+    var i = signX
+    while (i != x + signX) {
+        print("%${w}s".format(i))
+        i += signX
     }
     println()
 
-    for (i in 1..y) {
-        print(String.format("%${w}s", i))
-        for (j in 1..x) {
-            print(String.format("%${w}s", i * j))
+    var j = signY
+
+    while (j != y + signY) {
+        i = signX
+        print("%${w}s".format(j))
+        while (i != x + signX) {
+            print("%${w}s".format(i * j))
+            i += signX
         }
+        j += signY
         println()
     }
 }
