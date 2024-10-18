@@ -3,7 +3,7 @@ package com.samikhao.kotlincourse.lesson12
 
 fun main() {
     println(multiplyByTwo(7))
-    println(isEven(3))
+    println(isEven(2))
     printNumbersUntil(5)
     println(findFirstNegative(listOf(0, 4, -1, -3, 1)))
     processList(listOf("nest", null, "egg"))
