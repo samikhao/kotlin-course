@@ -1,7 +1,7 @@
 package com.samikhao.kotlincourse.lesson15.extraTask
 
 class Shelf(val capacity: Int, val items: MutableList<String>) {
-    private var usedCapacity = items.sumOf { it.length }
+    var usedCapacity = items.sumOf { it.length }
 
     fun addItem(name: String): Boolean {
         if (canAccommodate(name)) {
