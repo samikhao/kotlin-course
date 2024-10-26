@@ -1,46 +1,34 @@
 package com.samikhao.kotlincourse.lesson15.extraTask
 
 class Rack(val shelves: MutableList<Shelf>, val capacity: Int) {
-    private var usedCapacity: Int = 34
+    var usedCapacity: Int = shelves.size
 
     fun addShelf(): Boolean {
         if (usedCapacity + 1 <= capacity) {
-            usedCapacity++
+            shelves.add(Shelf(capacity = 50, items = mutableListOf()))
             return true
         }
         return false
     }
 
     fun removeShelf(index: Int): Boolean {
-        if (index in shelves.indices) {
+        if (index < usedCapacity) {
             shelves.removeAt(index)
             return true
         }
         return false
     }
 
-    fun addItem(item: String): Boolean {
+    fun addItem(item: Item): Boolean {
         if (shelves.isEmpty()) {
             return false
         }
-
-        var usedShelf = shelves[0]
-        var minUsed = usedShelf.capacity - usedShelf.usedCapacity
-
-        for (shelf in shelves) {
-            if (shelf.capacity - shelf.usedCapacity > minUsed) {
-                usedShelf = shelf
-                minUsed = usedShelf.capacity - usedShelf.usedCapacity
-            }
-        }
-
-        if (usedShelf.canAccommodate(item)) {
-            return usedShelf.addItem(item)
-        }
-        return false
+        return shelves
+            .maxBy { it.freeSpace() }
+            .addItem(item)
     }
 
-    fun removeItem(item: String): Boolean {
+    fun removeItem(item: Item): Boolean {
         for (shelf in shelves) {
             if (shelf.isHere(item)) {
                 return shelf.removeItem(item)
@@ -49,7 +37,7 @@ class Rack(val shelves: MutableList<Shelf>, val capacity: Int) {
         return false
     }
 
-    fun isInRack(item: String): Boolean {
+    fun isInRack(item: Item): Boolean {
         for (shelf in shelves) {
             if (shelf.isHere(item)) {
                 return true
@@ -58,5 +46,33 @@ class Rack(val shelves: MutableList<Shelf>, val capacity: Int) {
         return false
     }
 
-    fun getShelves() = shelves.toList()
+    fun getAllShelves() = shelves.toList()
+
+    fun printContent() {
+        for (i in shelves.indices) {
+            println("Info: Shelf #$i\n" +
+                    "Capacity: ${shelves[i].capacity}\n" +
+                    "Free space: ${shelves[i].freeSpace()}\n" +
+                    "List of items: ${shelves[i].getAllItems()}\n\n")
+        }
+    }
+
+    fun advancedRemoveShelf(index: Int): MutableList<Item> {
+        val res = mutableListOf<Item>()
+        var flag = false
+        for (item in shelves[index].getAllItems()) {
+            for (shelf in shelves.sortedBy { it.capacity }) {
+                if (shelf.canAccommodate(item)) {
+                    shelf.addItem(item)
+                    flag = true
+                    break
+                }
+            }
+            if (!flag) {
+                res.add(item)
+            }
+        }
+        removeShelf(index)
+        return res
+    }
 }

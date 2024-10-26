@@ -1,27 +1,29 @@
 package com.samikhao.kotlincourse.lesson15.extraTask
 
-class Shelf(val capacity: Int, val items: MutableList<String>) {
-    var usedCapacity = items.sumOf { it.length }
-
-    fun addItem(name: String): Boolean {
-        if (canAccommodate(name)) {
-            items.add(name)
+class Shelf(val capacity: Int, val items: MutableList<Item>) {
+    fun addItem(item: Item): Boolean {
+        if (canAccommodate(item)) {
+            items.add(item)
             return true
         }
         return false
     }
 
-    fun removeItem(name: String): Boolean {
-        if (isHere(name)) {
-            items.remove(name)
+    fun removeItem(item: Item): Boolean {
+        if (isHere(item)) {
+            items.remove(item)
             return true
         }
         return false
     }
 
-    fun canAccommodate(name: String) = usedCapacity + name.length <= capacity
+    fun canAccommodate(item: Item) = freeSpace() >= item.size
 
-    fun isHere(name: String) = name in items
+    fun isHere(item: Item) = item in items
 
-    fun getItems() = items.toList()
+    fun getAllItems() = items.toList()
+
+    fun usedCapacity() = items.sumOf { it.size }
+
+    fun freeSpace() = capacity - usedCapacity()
 }
