@@ -24,7 +24,7 @@ abstract class Materials {
 class ExtractFirst(): Materials() {
     fun extract(): String {
         val extracted = extractMaterial()
-        extracted.toString()
+        // extracted.toString() ???
         if (extracted.isEmpty()) {
             return ""
         }
