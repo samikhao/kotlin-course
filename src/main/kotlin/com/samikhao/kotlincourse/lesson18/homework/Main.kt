@@ -15,4 +15,10 @@ fun main() {
     val inkjet = InkjetPrinter()
     laser.myPrint("I feel like i'm drowning")
     inkjet.myPrint("I feel like i'm drowning aaa bbb ccc ddd eee fff ggg hhh")
+
+    val shoppingCart = ShoppingCart(mutableMapOf("aaa" to 1, "bbb" to 2, "ccc" to 4))
+    shoppingCart.addToCart("aaa")
+    shoppingCart.addToCart("ddd")
+    println(shoppingCart.toString())
+
 }
