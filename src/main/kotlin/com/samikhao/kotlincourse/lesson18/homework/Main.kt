@@ -4,6 +4,7 @@ import com.samikhao.kotlincourse.lesson18.homework.animals.Bird
 import com.samikhao.kotlincourse.lesson18.homework.animals.Cat
 import com.samikhao.kotlincourse.lesson18.homework.animals.Dog
 import com.samikhao.kotlincourse.lesson18.Colors
+import com.samikhao.kotlincourse.lesson18.homework.logger.Logger
 import com.samikhao.kotlincourse.lesson18.homework.printer.InkjetPrinter
 import com.samikhao.kotlincourse.lesson18.homework.printer.LaserPrinter
 
@@ -21,4 +22,9 @@ fun main() {
     shoppingCart.addToCart("ddd")
     println(shoppingCart.toString())
 
+    val logger = Logger()
+    logger.log("Hello everybody")
+    logger.log("ERROR", "AAA")
+    logger.log("WARNING", "!!!")
+    logger.log(Exception("Division by zero"))
 }
