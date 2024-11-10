@@ -80,3 +80,5 @@ interface Rechargeable {
     fun getChargeLevel(): Double
     fun recharge()
 }
+
+
