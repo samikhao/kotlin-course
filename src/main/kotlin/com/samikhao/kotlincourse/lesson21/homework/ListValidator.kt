@@ -9,5 +9,7 @@ package com.samikhao.kotlincourse.lesson21.homework
 // Ни один элемент приведённый к типу Double не равен 0.0
 
 class ListValidator<T: Number> : Validator<List<T?>> {
-    override fun check(list: List<T?>) = !list.contains(null) && list.all { it?.toDouble() != 0.0 }
+    override fun check(list: List<T?>): Boolean {
+        return !list.contains(null) && list.all { it?.toDouble() != 0.0 }
+    }
 }
