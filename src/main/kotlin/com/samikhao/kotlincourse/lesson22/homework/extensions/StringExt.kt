@@ -35,10 +35,10 @@ fun String.twitter(userList: List<String>) {
     val stats = "\uD83D\uDCCA"   // 📊
     val bookmark = "\uD83D\uDD16" // 🔖
 
-    val len = minOf(this.length, userList.size)
+    // val len = minOf(this.length, userList.size)
 
-    for (i in 0 until len) {
-        println("${userList[i]} 02.11.2005")
+    for (i in 0 until length) {
+        println("${userList[i % userList.size]} 02.11.2005")
         println(this[i].uppercase())
         println("$comment     $retweet     $like     $stats  $bookmark\n")
     }

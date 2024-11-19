@@ -34,6 +34,8 @@ fun main() {
     println(str.decrypt(1))
 
     println("\n---------- task 6 ----------")
-    val users = listOf("Lev Shevtsov", "Sergei", "сергей северин", "Daniil Puris", "саша\uD83E\uDD0D", "Daria Truefanoff", "Mazaeva")
-    "kotlin".twitter(users)
+    val users1 = listOf("Lev Shevtsov", "Sergei", "сергей северин", "Daniil Puris", "саша\uD83E\uDD0D", "Daria Truefanoff", "Mazaeva")
+    val users2 = listOf("Lev Shevtsov", "Sergei", "сергей северин", "Daniil Puris")
+    "kotlin".twitter(users1)
+    "kotlin".twitter(users2)
 }
