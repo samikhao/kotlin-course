@@ -28,12 +28,12 @@ fun main() {
         rec()
     } catch (e: Throwable) { // Ловим все исключения
         when (e) {
-            is NullPointerException -> println("Поймано NullPointerException: Попытка обращения к null-объекту!")
-            is ArrayIndexOutOfBoundsException -> println("Поймано ArrayIndexOutOfBoundsException: Обращение к неверному индексу массива!")
-            is ClassCastException -> println("Поймано ClassCastException: Неправильное приведение типов!")
-            is NumberFormatException -> println("Поймано NumberFormatException: Не удалось преобразовать строку в число!")
-            is OutOfMemoryError -> println("Поймано OutOfMemoryError: Недостаточно памяти для выполнения операции!")
-            is StackOverflowError -> println("Поймано StackOverflowError: Бесконечная рекурсия вызвала переполнение стека!")
+            is NullPointerException -> println("Поймано NullPointerException")
+            is ArrayIndexOutOfBoundsException -> println("Поймано ArrayIndexOutOfBoundsException")
+            is ClassCastException -> println("Поймано ClassCastException")
+            is NumberFormatException -> println("Поймано NumberFormatException")
+            is OutOfMemoryError -> println("Поймано OutOfMemoryError")
+            is StackOverflowError -> println("Поймано StackOverflowError")
             else -> println("Неизвестное исключение")
         }
     }
